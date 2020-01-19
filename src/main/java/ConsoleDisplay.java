@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class ConsoleDisplay {
     public static void printMenu() {
       System.out.println(String.format("%s - ADD; %s - DELETE; %s - UPDATE; %s - SHOW;" +
-              " %s - FIND; %s - Exit;", ActionType.ADD.getIndex(), ActionType.DELETE.getIndex(),
+              " %s - FIND; %s - Exit; %s - Save", ActionType.ADD.getIndex(), ActionType.DELETE.getIndex(),
               ActionType.EXIT.getIndex(), ActionType.FIND.getIndex(), ActionType.SHOW.getIndex(),
-              ActionType.UPDATE.getIndex()));
+              ActionType.UPDATE.getIndex(), ActionType.SAVE.getIndex()));
     }
 
     public static void printContacts(ArrayList<Contact> contacts){

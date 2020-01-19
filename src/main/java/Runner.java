@@ -35,10 +35,58 @@ public class Runner {
                     int id = scanner.nextInt();
                     ConsoleDisplay.printContact(phonebook.get(id));
                 } else if (input == ActionType.FIND.getIndex()) {
-                    System.out.print("Find by name: ");
-                    String name = scanner.next();
-                    ArrayList<Contact> filteredContacts = phonebook.findByName(name);
-                    ConsoleDisplay.printContacts(filteredContacts);
+                    System.out.println("How do you want to search the contact?");
+                    System.out.println("If you want search by foul name - input 1");
+                    System.out.println("If you want search by first letters of name - input 2");
+                    System.out.println("If you want search by 4 last numbers of phone - input 3");
+
+                    int searchTypeIndex = scanner.nextInt();
+                    if (searchTypeIndex == 1) {
+                        System.out.print("Find by name: ");
+                        String name = scanner.next();
+                        ArrayList<Contact> filteredContacts = phonebook.findByName(name);
+                        ConsoleDisplay.printContacts(filteredContacts);
+                    }else if(searchTypeIndex== 2){
+                        System.out.print("Find by name first letters: ");
+                        String name = scanner.next();
+                        ArrayList<Contact> filteredContacts = phonebook.findByFirstLetters(name);
+                        ConsoleDisplay.printContacts(filteredContacts);
+                    } else if(searchTypeIndex== 3){
+                        System.out.print("Find by phone last numbers: ");
+                        String phone = scanner.next();
+                        ArrayList<Contact> filteredContacts = phonebook.findByPhone(phone);
+                        ConsoleDisplay.printContacts(filteredContacts);
+                    }
+                }else if (input == ActionType.UPDATE.getIndex()){
+                    System.out.print("input id : ");
+                    int id = scanner.nextInt();
+                    ConsoleDisplay.printContact(phonebook.get(id));
+                    System.out.print("input number of field that you want update: ");
+                    int numberOfField = scanner.nextInt();
+                    if(numberOfField==1){
+                        Contact contact1 = phonebook.get(id);
+                        System.out.print("input new name:");
+                        String name = scanner.next();
+                        Contact contact2 = new Contact(name,contact1.getPhone(),contact1.getBirthday());
+                        phonebook.set(id, contact2);
+                        ConsoleDisplay.printContact(phonebook.get(id));
+                    }else if (numberOfField==2){
+                        Contact contact1 = phonebook.get(id);
+                        System.out.print("input new phone:");
+                        String phone = scanner.next();
+                        Contact contact2 = new Contact(contact1.getName(),phone,contact1.getBirthday());
+                        phonebook.set(id, contact2);
+                        ConsoleDisplay.printContact(phonebook.get(id));
+                    }else if (numberOfField==3){
+                        Contact contact1 = phonebook.get(id);
+                        System.out.print("input new birthday:");
+                        String birthday = scanner.next();
+                        Contact contact2 = new Contact(contact1.getName(),contact1.getPhone(),birthday);
+                        phonebook.set(id, contact2);
+                        ConsoleDisplay.printContact(phonebook.get(id));
+                    }
+                }else if (input == ActionType.SAVE.getIndex()){
+                    FileController.saveToFile(phonebook.getAllContact());
                 }
             } else {
                 System.out.println("Looser! ;P");
