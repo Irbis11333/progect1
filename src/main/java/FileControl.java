@@ -2,7 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FileController {
+public class FileControl {
     public static void saveToFile(ArrayList<Contact> contacts){
         try {
             FileWriter fstream = new FileWriter("PhoneBook.txt");
