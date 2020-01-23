@@ -86,7 +86,7 @@ public class Runner {
                         ConsoleDisplay.printContact(phonebook.get(id));
                     }
                 }else if (input == ActionType.SAVE.getIndex()){
-                    FileController.saveToFile(phonebook.getAllContact());
+                    FileControl.saveToFile(phonebook.getAllContact());
                 }
             } else {
                 System.out.println("Looser! ;P");
